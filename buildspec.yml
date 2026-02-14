@@ -14,8 +14,9 @@ phases:
       # Copy appspec.yml and scripts into build folder
       - cp appspec.yml build/
       - cp -r scripts build/
+      - cd build
+      - zip -r ../react-app.zip *
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: build
+    - react-app.zip   # <-- only upload the zip
