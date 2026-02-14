@@ -1,19 +1,15 @@
-version: 0.2
-
-phases: 
-  install: 
-    runtime-versions: 
+phases:
+  install:
+    runtime-versions:
       nodejs: 18
-    commands: 
-      - echo "Installing dependencies"
+    commands:
       - npm install
-
-  build: 
-    commands: 
-      - echo "Building the React app"
+  build:
+    commands:
       - npm run build
-
-artifacts: 
-  files: 
+      # copy appspec.yml and scripts/ into build folder
+      - cp -r appspec.yml scripts build/
+artifacts:
+  files:
     - '**/*'
   base-directory: build
